@@ -12,8 +12,6 @@ void pin_setup(void) {
     PORTB &= ~(1<<0);               // Set LED0 initial state to OFF
     DDRB |= (1<<1);                 // Set PB1 as output (LED1)
     PORTB &= ~(1<<1);               // Set LED1 initial state to OFF
-    DDRC &= ~(1<<0);
-    PORTC |= (1<<0);  
 }
 
 int main(void) {
@@ -28,16 +26,11 @@ int main(void) {
         // Read the received data
         received_data = UDR0;
 
-        if (!(PINC & (1<<0))) { //Check PD4=0?
-            PORTB =     //Yes, PB0=1 -> LED0 on
-        }
-
         // Process received commands
-        if (received_data == '1') {    // Toggle LED0
+        if (received_data) {    // Toggle LED0
             PORTB ^= (1<<0);
-        } else if (received_data == '2') { // Toggle LED1
             PORTB ^= (1<<1);
-        }
+        } 
     }
     return 0;
 }
