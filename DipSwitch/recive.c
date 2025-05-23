@@ -19,12 +19,13 @@ int main(void) {
     pin_setup();
     while (1) {         //Receive the input and show it on output pins
         while (!(UCSR0A&(1<<RXC0)));  //Wait until RXC0 flag = 1
-        
-        if (UDR0 == 0b0001010){
+        received_byte = UDR0;
+
+        if (received_byte == 0b0001010){
             PORTB = 0b10000000;  
             PORTD = 0b00100010; 
         }
-        else if (UDR0 == 0b0000011){
+        else if (received_byte == 0b0000011){
             PORTB = 0b10000000;  
             PORTD = 0b00001001;  
         }
