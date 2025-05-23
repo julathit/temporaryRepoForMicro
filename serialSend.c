@@ -21,7 +21,7 @@ int main(void) {
         // Check if Switch 0 is pressed (PD2 is LOW)
         if (!(PIND & (1<<PD2))) {
             while (!(UCSR0A & (1<<UDRE0))); // Wait until UDRO is empty
-            UDR0 = 1;                    // Send data
+            UDR0 = '1';                    // Send data
         }
 
         _delay_ms(50);              // Small polling delay

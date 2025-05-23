@@ -27,7 +27,7 @@ int main(void) {
         received_data = UDR0;
 
         // Process received commands
-        if (received_data) {    // Toggle LED0
+        if (received_data == '1') {    // Toggle LED0
             PORTB ^= (1<<0);
             PORTB ^= (1<<1);
         } 

@@ -19,7 +19,7 @@ int main(){
 
     // Pin Change Interupt
     PCICR = (1<<PCIE1);
-    PCMSK1 = bx100; //start with 0 2,1,0
+    PCMSK1 = 0b100; //start with 0 2,1,0
 
     sei();  //enable interupt
     while (true){}
@@ -34,6 +34,6 @@ ISR(PCINT1_vect){
     z--;
     if (z==0){
         PORTD ^= (1<<6);
-        z = 8;// for press 8 time
+        z = 8;// for press 4 time
     }
 }
